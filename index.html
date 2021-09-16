@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget: Slider</title>
+
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function(){
+             $("#mySlider").slider({change:function(e,ui){
+                 $("#current").text(ui.value);
+             },
+                 slide:function(e,ui){
+                     $("#changing").text(ui.value);
+               },
+                 start:function(){
+                     alert("Sliding started");
+                 },
+                  stop:function(){
+                      alert("Sliding stopped");
+                  }});
+
+
+            // $("#mySlider").slider({value: 50, range:true, values:[24,74],
+            //              change:function(e, ui){
+            //                  $("#current").text(ui.values[0]+ ' - ' + ui.values[1]);
+            //              }}); 
+            // var min = $("#mySlider").slider("option","min");
+            // var max = $("#mySlider").slider("option","max");
+            var current = $("#mySlider").slider("option", "value");
+            $("#current").text(current);
+            // $("#current").text(current[0]+ ' - '+current[1]);
+          
+        })
+        // .slider({min, max, step, animate, orientation}) - more options
+    </script>
+
+</head>
+<body>
+    Value:<span id="current"></span>
+    Changing: <span id="changing"></span>
+    <div id="mySlider"></div>
+</body>
+</html>
